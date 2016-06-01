@@ -1,0 +1,499 @@
+body {
+  overflow: auto;
+  min-width: 1200px;
+}
+/**今日数据*/
+.j_right {
+  padding-left: 10px;
+  font-family: "songti";
+  color: #515253;
+  font-weight: bold;
+}
+.content_top {
+  position: relative;
+}
+#data_header {
+  font-size: 16px;
+  color: #656565;
+}
+#data_header .rigzs {
+  color: #777;
+  font-size: 12px;
+  float: right;
+  margin-top: 15px;
+}
+#data_header button {
+  float: right;
+  margin-left: 15px;
+}
+.toback {
+  position: absolute;
+  top: 11px;
+  right: 30px;
+  background-color: #64C02D;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 15px 10px;
+}
+.report_tip {
+  padding: 50px 0;
+  text-align: center;
+}
+.toback:hover {
+  color: #fff;
+}
+.today_data_box {
+  width: 98%;
+  border: 1px #ffcc00 solid;
+  background-color: #FBECBF;
+  color: #000;
+  font-weight: bold;
+  margin-left: 15px;
+  padding-bottom: 15px;
+}
+.data_item {
+  width: 16%;
+  height: 100%;
+  display: inline-block;
+}
+.item_title {
+  margin-top: 20px;
+  padding-left: 40%;
+}
+.data_content {
+  border-right: 1px #d7d7d7 solid;
+  padding-top: 25px;
+}
+.data_detail {
+  padding-left: 40%;
+  padding-bottom: 20px;
+}
+.special_detail {
+  padding-bottom: 20px;
+}
+.detail_title {
+  display: inline-block;
+  width: 40%;
+  padding-left: 20px;
+}
+.detail_value {
+  display: inline-block;
+  width: 60%;
+}
+.today_data_tip {
+  font-weight: normal;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 12px;
+  color: #999;
+}
+/**展现指标*/
+.compare {
+  width: 120px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid #ccc;
+  font-size: 10px;
+  position: relative;
+  margin-right: 10px;
+  display: inline-block;
+}
+.compare > .compare_content,
+.compare > .sort_content {
+  position: absolute;
+  left: 0;
+  top: 23px;
+  width: 100%;
+  z-index: 9999;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 3px;
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+  box-shadow: 3px 3px 5px #888888;
+  display: none;
+}
+.search_param {
+  cursor: pointer;
+}
+.param_cur {
+  color: #FCBE52;
+  border: #FCBE52 1px solid;
+}
+.panel-heading .plan {
+  width: 80px;
+  padding-right: 15px;
+}
+.plan .sel_btn {
+  width: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.sort_content span {
+  display: block;
+  padding-left: 5px !important;
+}
+.sort_content span:hover {
+  cursor: pointer;
+  background: #f7f7f7;
+}
+/**数据折线图*/
+.m-b {
+  display: inline;
+}
+.data_line_top {
+  height: 44px;
+  line-height: 44px;
+  color: #000;
+}
+.data_line_top .bottom {
+  font-size: 12px;
+}
+.form-control {
+  width: 200px;
+  height: 30px;
+  padding: 1px 15px;
+}
+.data_fx {
+  color: #AEAEAE;
+}
+.top_right a {
+  color: #000;
+  margin: 0 8px;
+  text-decoration: none;
+}
+.top_right a:hover {
+  color: #000;
+  margin: 0 8px;
+  text-decoration: underline;
+}
+.line_box {
+  width: 98%;
+  background-color: #fff;
+  margin-left: 15px;
+}
+.line_box_title {
+  margin-left: -15px;
+  margin-right: -15px;
+  height: 44px;
+  line-height: 44px;
+  background-color: #f7f7f7;
+  border-bottom: 1px #d7d7d7 solid;
+  padding-left: 20px;
+}
+.line_box_title .more {
+  padding-right: 20px;
+}
+.green_box {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #FF7F50;
+  margin-right: 5px;
+}
+.red_box1 {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #D97A81;
+}
+.purple_box {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #B7A3DF;
+}
+.purple_box1 {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #DA70D6;
+}
+.green_box1 {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #32CD32;
+}
+.gray_box1 {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #e9e9e9;
+}
+.blue_box {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #6495ED;
+}
+.blue_box1 {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #87CEFA;
+}
+.red_box {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #FF0000;
+}
+.orange_box {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #FF7F50;
+}
+.orange_box1 {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #F7B980;
+}
+.green_box2 {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #5FC759;
+}
+.green_box3 {
+  width: 15px;
+  height: 12px;
+  float: left;
+  background-color: #77D3D4;
+}
+.b_r_tip {
+  padding-left: 20px;
+}
+/**6个图表开始*/
+.charts_item {
+  width: 49%;
+  background-color: #fff;
+  float: left;
+  margin-left: 1%;
+  margin-top: 10px;
+}
+.chart_box {
+  width: 35%;
+  height: 280px;
+  float: left;
+}
+.chart_info {
+  width: 65%;
+  float: right;
+}
+.chart_info table {
+  width: 100%;
+  margin-top: 20px;
+}
+.chart_info table tbody {
+  font-size: 12px;
+}
+.chart_info table th,
+td {
+  padding: 5px 0;
+}
+.chart_info .line {
+  background-color: #999;
+  margin-left: 5px;
+}
+.chart_info .line_1 {
+  width: 12%;
+  height: 2px;
+  margin-bottom: 1px;
+}
+.chart_info .line_2 {
+  width: 10%;
+  height: 2px;
+  margin-bottom: 1px;
+}
+.chart_info .line_3 {
+  width: 11%;
+  height: 2px;
+  margin-bottom: 1px;
+}
+.chart_info .line_4 {
+  width: 8%;
+  height: 2px;
+  margin-bottom: 1px;
+}
+.chart_box_map {
+  width: 40%;
+}
+.chart_info_map {
+  width: 55%;
+  position: relative;
+}
+.charts_item .map_tip {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: gray;
+}
+.gray_area {
+  width: 80px;
+  height: 12px;
+  background-color: #F4F4F4;
+}
+.gray_area div {
+  float: left;
+  height: 12px;
+}
+.red_area {
+  width: 100%;
+  height: 12px;
+  background-color: #EE6465;
+}
+.margin_l_20 {
+  margin-left: 20px;
+}
+.margin_t_30 {
+  margin-top: 30px;
+}
+.no_data {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  color: #999;
+  font-size: 16px;
+}
+#chartToggle {
+  float: right;
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  right: 5%;
+  margin-top: 10px;
+}
+#chartToggle .toggle.current {
+  background: #e67e22;
+  border: 1px solid #e67e22;
+  color: #ffffff;
+}
+#chartToggle .toggle {
+  float: left;
+  width: 50px;
+  border: 1px solid #CCCCCC;
+  box-sizing: border-box;
+  text-align: center;
+  cursor: pointer;
+}
+.data_line_top span {
+  padding: 0 20px 0 0;
+  cursor: pointer;
+}
+.data_line_top span.cur {
+  color: #e67e22;
+}
+#reservation {
+  background: #fff;
+}
+.panel-default .panel-heading {
+  border-bottom: 0px;
+}
+.panel-title {
+  font-size: 14px;
+}
+.hidden-xs {
+  min-height: 150px;
+  color: #000;
+  padding-left: 30px;
+  text-align: left !important;
+}
+.hidden-xs .count {
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.hidden-xs .name {
+  margin-top: 5px;
+}
+.hidden-xs .percent {
+  margin-top: 5px;
+  color: #ccc;
+}
+.bg-info {
+  min-height: 150px;
+}
+.bg-info .title {
+  padding-left: 30px;
+  text-align: left !important;
+}
+.bg-info .put {
+  margin-top: 10px;
+  text-align: center;
+}
+.bg-info .put .put_count {
+  font-size: 32px !important;
+  margin-right: 10px;
+}
+.msgbox td {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.daterangepicker.dropdown-menu {
+  width: auto;
+}
+.bodybg_hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+  z-index: 10000;
+}
+.msgbox_down {
+  width: 500px;
+  height: 300px;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: -150px auto 0 auto;
+}
+.msgbox_down .panel-heading {
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+.msgbox_down .close {
+  float: right;
+  font-size: 15px;
+}
+.msgbox_down .msgtab {
+  padding: 0 0 0 80px;
+  height: 30px;
+}
+.msgbox_down .msgtab li {
+  float: left;
+  padding: 0 20px ;
+  line-height: 14px;
+  cursor: pointer;
+}
+.msgbox_down .msgtab li.l {
+  border-right: 1px solid #eee;
+}
+.msgbox_down .msgtab li.on {
+  color: #ff6600;
+}
+.msgbox_down .msgtime {
+  margin: 0 100px;
+}
+.msgbox_down .msgtime p span {
+  float: left;
+  width: 90px;
+}
+.msgbox_down .msgtime p .form-control {
+  width: 170px;
+}
+.msgbox_down .panel-footer {
+  text-align: right;
+}
+
+/*# sourceMappingURL=outline.css.map */

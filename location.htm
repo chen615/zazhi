@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://e.tvm.cn/datacenter/outline -->
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Bootstrap Admin App + jQuery">
+<meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>电视直通车-自助投放平台</title>
+<!-- =============== VENDOR STYLES ===============-->
+<!-- =============== BOOTSTRAP STYLES ===============-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap.css" id="bscss">
+<!-- SWEET ALERT-->
+<link rel="stylesheet" href="./fenxi_files/sweetalert.css">
+<!-- FONT AWESOME-->
+<link rel="stylesheet" href="./fenxi_files/font-awesome.min.css">
+<!-- ANIMATE.CSS-->
+<link rel="stylesheet" href="./fenxi_files/animate.min.css">
+<!-- WHIRL (spinners)-->
+<link rel="stylesheet" href="./fenxi_files/whirl.css">
+<!-- =============== PAGE VENDOR STYLES ===============-->
+
+<!-- =============== APP STYLES ===============-->
+<link rel="stylesheet" href="./fenxi_files/app-new.css" id="maincss">
+<link rel="stylesheet" href="./fenxi_files/theme-i.css" id="maincss">
+<!-- Loaders.css-->
+<link rel="stylesheet" href="./fenxi_files/loaders.css">
+<script src="./fenxi_files/jquery.js"></script>
+<script src="./fenxi_files/jquery.form.js"></script>
+<!-- Spinkit-->
+<link rel="stylesheet" href="./fenxi_files/spinkit.css">
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars-->
+<link rel="stylesheet" href="./fenxi_files/jquery.fileupload.css">
+<link rel="stylesheet" type="text/css" media="all" href="./fenxi_files/daterangepicker-bs3.css">
+<!--   <script type="text/javascript" src="./fenxi_files/daterangepicker/jquery-1.8.3.min.js"></script>-->
+<script type="text/javascript" src="./fenxi_files/moment.js"></script>
+<script type="text/javascript" src="./fenxi_files/daterangepicker.js"></script>
+<!-- DATETIMEPICKER-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap-datetimepicker.min.css">
+<!-- SLIDER CTRL-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap-slider.min.css">
+<!-- CHOSEN-->
+<link rel="stylesheet" href="./fenxi_files/chosen.min.css">
+<!-- TAGS INPUT-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap-tagsinput.css">
+<!--shouye-->
+<link rel="stylesheet" href="./fenxi_files/simple-line-icons.css">
+<link rel="stylesheet" href="./fenxi_files/weather-icons.min.css">
+<!--shouye end-->
+
+
+<style type="text/css"></style><link href="./fenxi_files/WdatePicker.css" rel="stylesheet" type="text/css"></head>
+
+<body>
+<div id="myModal_publish" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 id="myModalLabel" class="modal-title">修改预算</h4>
+            </div>
+            <div class="modal-body">
+                <div>有<label id="failTotal"></label>个计划修改失败。<!--计划出价不可低于出价底价。--></div>
+                <div id="showFail">哪些计划修改失败？</div>
+                <ul class="errorList">
+                    <!--<li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>-->
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper">
+
+    <!-- Top header navbar-->
+          <header class="topnavbar-wrapper">
+         <!-- START Top Navbar-->
+         <nav role="navigation" class="navbar topnavbar">
+            <!-- START navbar header-->
+            <input type="hidden" value="http://api.dsp.tvm.cn" name="adcloud-url" id="adcloud-url">
+            <input type="hidden" value="http://dmp.tvm.cn" name="adm-url" id="adm-url">
+            <div class="navbar-header">
+               <a href="http://e.tvm.cn/" class="navbar-brand">
+                  <div class="brand-logo">
+                     
+                     <span style="float: left; color:#fff;height:46px; line-height:46px; margin-top:7px; font-size:16px;">电视直通车-自助投放平台</span>
+                  </div>
+                  <div class="brand-logo-collapsed">
+                     <img src="./fenxi_files/logo-small.png" alt="电视直通车-自助投放平台" class="img-responsive">
+                  </div>
+               </a>
+            </div>
+            <!-- END navbar header-->
+            <!-- START Nav wrapper-->
+            <div class="nav-wrapper">
+               <!-- START Left navbar-->
+                                                                                                                                                                                                                                                               <!-- END Left navbar-->
+               <!-- START Right Navbar-->
+               <ul class="nav navbar-nav navbar-right" style="margin-right:10px;">
+                  <!-- Search icon-->
+                  <!--<li>
+                     <a href="#" data-search-open="">
+                        <em class="icon-magnifier"></em>
+                     </a>
+                  </li>-->
+                  <!-- START Offsidebar button-->
+                  <li>
+                     <a href="javascript:;" -data-search-open="" class="nickname">
+                        <em data-localize="sidebar.heading.HEADER">欢迎，20134560570</em>
+                     </a>
+                  </li>
+                  <!-- <li>
+                     <a href="http://yaomall.tvm.cn" target="_blank">
+                        <em>我的微商城</em>
+                     </a>
+                  </li> -->
+                  <li class="dropdown dropdown-list" style="display:none">
+                      <a href="http://e.tvm.cn/message" style="box-shadow: none;">
+                        <em class="icon-bell"></em>
+                        <div class="label label-danger" msg="num" style="background: #27c24c"></div>
+                      </a>
+                      <!-- START Dropdown menu-->
+                      <ul class="dropdown-menu animated flipInX">
+                         <li id="msg-list">
+                            <!-- START list group-->
+                            <div class="list-group">
+                               <!-- list item-->
+                                                                                                                                                                                                                                                                                   <!-- list item-->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </div>
+                            <!-- END list group-->
+                         </li>
+                      </ul>
+                      <!-- END Dropdown menu-->
+                  </li>
+                  <li>
+                     <a href="http://e.tvm.cn/auth/logout" data-no-persist="true" title="退出">
+                        <em class="icon-notebook"></em>
+                     </a>
+                  </li>
+                  <!-- END Offsidebar menu-->
+               </ul>
+               <!-- END Right Navbar-->
+            </div>
+            <!-- END Nav wrapper-->
+            <!-- START Search form-->
+            <form role="search" action="http://e.tvm.cn/datacenter/search.html" class="navbar-form">
+               <div class="form-group has-feedback">
+                  <input type="text" placeholder="Type and hit enter ..." class="form-control">
+                  <div data-search-dismiss="" class="fa fa-times form-control-feedback"></div>
+               </div>
+               <button type="submit" class="hidden btn btn-default">Submit</button>
+            </form>
+            <!-- END Search form-->
+         </nav>
+         <!-- END Top Navbar-->
+         <style>
+            .nav-wrapper ul li .nickname:hover{
+               cursor:default;
+            }
+            .msg-con{
+               width: 300px;
+               padding: 5px 0px;
+               overflow: hidden;
+               white-space: nowrap;
+               text-overflow: ellipsis;
+               font-size: 12px;
+            }
+            .dropdown-list .msg-more{
+               padding: 12px 20px;
+               color: #23b7e5;
+               text-align: right;
+            }
+            .dropdown-list .msg-more:hover{
+               text-decoration: underline;
+               color: #23b7e5;
+            }
+         </style>
+         
+      </header>
+            <!-- Sidebar-->
+          <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <div class="aside-inner">
+            <nav data-sidebar-anyclick-close="" class="sidebar" id="sidebar">
+               <!-- START sidebar nav-->
+               <ul class="nav" id="nav">
+                  <!-- Iterates over all sidebar items-->
+             
+                  <!-- <li class=" ">
+                     <a href="/material" title="方案管理">
+                        <em class="icon-layers"></em>
+                        <span data-localize="sidebar.nav.menu.MENU">方案管理</span>
+                     </a>
+                  </li> -->
+                  
+                  <li class="active">
+                     <a href="http://e.tvm.cn/datacenter/outline#datacenter" title="数据中心" data-toggle="collapse" aria-expanded="true">
+                        <em class="icon-graph"></em>
+                        <span data-localize="sidebar.nav.menu.MENU">数据中心</span>
+                     </a>
+                     <ul id="datacenter" class="nav sidebar-subnav collapse in" aria-expanded="true">
+                        <li class="sidebar-subnav-header">数据中心</li>
+
+                        <li class=" ">
+                           <a href="gaiyao.htm" title="数据概要">
+                              <span>数据概要</span>
+                           </a>
+                        </li>
+                       
+                        <li class=" ">
+                           <a href="mingxi.htm" title="曝光明细">
+                              <span>曝光明细</span>
+                           </a>
+                        </li>
+                        <li class="active">
+                           <a href="fenxi.htm" title="投放分析">
+                              <span>投放分析</span>
+                           </a>
+                        </li>
+                        <!-- <li class=" ">
+                           <a href="/datacenter/user/profile" title="用户图谱">
+                              <span>用户图谱</span>
+                           </a>
+                        </li> -->
+                     </ul>
+                  </li>
+                 
+               </ul>
+               <!-- END sidebar nav-->
+            </nav>
+         </div>
+         <!-- END Sidebar (left)-->
+      </aside>
+
+
+            <!-- Offsidebar-->
+          <aside class="offsidebar">
+         <!-- START Off Sidebar (right)-->
+         <nav>
+            <div role="tabpanel">
+               <!-- Nav tabs-->
+               <ul role="tablist" class="nav nav-tabs nav-justified">
+                  <li role="presentation" class="active">
+                     <a href="http://e.tvm.cn/datacenter/outline#app-settings" aria-controls="app-settings" role="tab" data-toggle="tab">
+                        <em class="icon-equalizer fa-lg"></em>
+                     </a>
+                  </li>
+                  <li role="presentation">
+                     <a href="http://e.tvm.cn/auth/logout">
+                        <em class="icon-users fa-lg"></em>
+                     </a>
+                  </li>
+               </ul>
+               <!-- Tab panes-->
+               <div class="tab-content">
+                  <div id="app-settings" role="tabpanel" class="tab-pane fade in active">
+                     <h3 class="text-center text-thin">Tab 1</h3>
+                  </div>
+                  <div id="app-chat" role="tabpanel" class="tab-pane fade">
+                     <h3 class="text-center text-thin">Tab 2</h3>
+                  </div>
+               </div>
+            </div>
+         </nav>
+         <!-- END Off Sidebar (right)-->
+      </aside>
+            <!-- Main section-->
+        <section>
+    <link rel="stylesheet" href="./fenxi_files/sun_publish-60edf09f.css">
+    <link rel="stylesheet" href="./fenxi_files/location-c4ed0d5e.css">
+    <!-- Page content-->
+
+    <div class="content-wrapper">  
+    <div class="content-heading content_top">
+        <div class="todayData">
+            <a href="fenxi.htm">
+                <span>媒体分析&nbsp;&nbsp;</span>
+            </a> |
+            <a href="location.htm" class="current">
+                &nbsp;&nbsp;地区分析
+            </a>
+        </div>
+    </div>
+
+    <!-- 今日数据start -->
+    <div id="dateSelect" style="margin-top: 21px;background: #F5F7FA;">
+
+        <!--  时间选择 b-->
+        <div class="data_line_top" style="height:50px">
+            <span>选择时间:</span> <span class="cur" date=0>今天</span><span date=1>昨天</span><span date=7>最近7天</span>
+            <input type="text" readonly="" style="width: 210px; display:inline" name="reservation" id="reservation" class="form-control " value="">
+            <span class="days"></span>                
+        </div>
+
+    </div>
+
+
+    <!-- 数据折线图start -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+           <div class="panel-title"> 曝光分布</div>
+            <a href="javascript:void(0)" title="" class="pull-right" id="tabShow">
+                <span style="line-height: 28px;">收起</span><em class="fa fa-minus"></em>
+            </a>
+            <!--<div class="fr"><span class="fa fa_up"></span></div>
+            <div class="clear"></div>-->
+        </div>
+        <div class="panel-body charts_box">
+            <!-- 柱状图 -->
+            <div id="data_box_map" style="width:60%;height:300px;float:left;"></div>
+            <!-- 饼状图 -->
+            <div id="data_box_pie" style="width:35%;height:300px;float:right;"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <!-- 表格开始 -->
+    <div class="tablebox panel panel-default">
+       <div class="panel-heading">
+         <div class="panel-title">地区数据</div>
+  
+        <!-- 详细数据 -->
+    
+                
+                <div class="compare" style="display:none">比较指标<span class="fa fa-caret-down"></span>
+                    <div class="compare_content">
+                            <span>
+                                <input type="checkbox" name="" value="" class="consumption"/>
+                                <span>总消费环比</span>
+                            </span>
+                            <span>
+                                <input type="checkbox" name="" value="" class="pv"/>
+                                <span>曝光环比</span>
+                            </span>
+                        <span>
+                            <input type="checkbox" name="" value="" class="cn"/>
+                            <span>点击环比</span>
+                        </span>
+                            <span>
+                                <input type="checkbox" name="" value="" class="clickcont"/>
+                                <span>点击率环比</span>
+                            </span>
+                        <!-- <span>
+                            <input type="checkbox" name="" value="" class="average"/>
+                            <span>平均出价环比</span>
+                        </span> -->
+                    </div>
+                </div>
+        
+            <!-- START panel-->
+     </div>
+       
+
+      
+                <!-- START table-responsive-->
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr class="col_title">
+                                <th>地区</th>
+
+                                    <th id="pv_th" class="pv">曝光
+                                        <em class="fa sort_desc"></em>
+                                    </th>
+                                    <th class="hb hb_pv">
+                                        曝光环比
+                                    </th>
+                                
+                                <th id="cn_th" class="cn">点击
+                                    <em class="fa sort_desc"></em>
+                                </th>
+                                <th class="hb hb_cn">
+                                  点击环比
+                                </th>
+
+                                    <th id="consumption_th" class="consumption">总消费(元)
+                                        <em class="fa sort_desc"></em>
+                                    </th>
+                                    <th class="hb hb_consumption">
+                                        总消费环比
+                                    </th>
+
+                                    <!--th id="clickcont_th" class="clickcont">点击率
+                                        <em class="fa sort_desc"></em>
+                                    </th>
+                                    <th class="hb hb_clickcont">
+                                        点击率环比
+                                    </th-->
+                                
+                                <!-- <th id="average_th" class="average">平均出价(元)
+                                    <em class="fa sort_desc"></em>
+                                </th>
+                                <th class="hb hb_average">
+                                  平均出价环比
+                                </th> -->
+    
+                            </tr>
+                        </thead>
+                        <tbody class="col_body">
+    
+                        </tbody>
+                        <tbody class="summary">
+                
+                        </tbody>
+                    </table>
+                </div>
+                <!-- END table-responsive-->
+          
+            <div class="panel-footer">
+                <div id="pagination"></div>
+            </div>
+        </div>
+        <!-- 结构占比 
+        <div id="profile" role="tabpanel" class="tab-pane">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>-->
+      </div>
+
+    <!-- 表格结束 -->
+    <!-- 提醒开始 -->
+    <!--<div class="notice">比较指标：可多选指标进行比较。<br>
+比较时间：将以您选取的时间段为第一时段，默认第一时段之前且时间区间相同的时间为第二时段。<br>
+对比公式：增减幅度=(第一时段/第二时段-1)*100%</div>-->
+    <!-- 提醒结束 -->
+
+
+    </section>
+
+
+    
+    <!-- echarts 地图开始 -->
+    <script src="./fenxi_files/echarts.js"></script>
+    <script src="./fenxi_files/jquery.min.js"></script>
+    <script src="./fenxi_files/jqPaginator.js"></script><!--翻页-->
+    <script src="./fenxi_files/daterangepicker.js"></script>    
+    
+    <script src="./fenxi_files/page-3a380c02.js"></script>
+
+    <script src="./fenxi_files/location-7a847bff.js"></script>
+
+            <!-- Page footer-->
+
+         <!-- <footer id="footer" style="">
+        <span>版权所有© 天脉聚源(北京)传媒科技有限公司2008-2016保留一切权利</span>
+    </footer> -->
+</div>
+
+<!-- =============== VENDOR SCRIPTS ===============-->
+<!-- JQUERY-->
+
+<!-- SLIDER CTRL-->
+<script src="./fenxi_files/bootstrap-slider.min.js"></script>
+
+<!-- MODERNIZR-->
+<script src="./fenxi_files/modernizr.js"></script>
+
+<!-- BOOTSTRAP-->
+<script src="./fenxi_files/bootstrap.js"></script>
+<!-- STORAGE API-->
+<script src="./fenxi_files/jquery.storageapi.js"></script>
+<!-- JQUERY EASING-->
+<script src="./fenxi_files/jquery.easing.js"></script>
+<!-- ANIMO-->
+<script src="./fenxi_files/animo.js"></script>
+<!-- LOCALIZE-->
+<script src="./fenxi_files/jquery.localize.js"></script>
+<!-- RTL demo-->
+<script src="./fenxi_files/demo-rtl.js"></script>
+<!-- SLIMSCROLL-->
+<script src="./fenxi_files/jquery.slimscroll.min.js"></script>
+<!-- SCREENFULL-->
+<script src="./fenxi_files/screenfull.js"></script>
+
+<!-- SWEET ALERT-->
+<script src="./fenxi_files/sweetalert.min.js"></script>
+<!-- =============== PAGE VENDOR SCRIPTS ===============-->
+<!-- PARSLEY-->
+<script src="./fenxi_files/parsley.min.js"></script>
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included-->
+<script src="./fenxi_files/widget.js"></script>
+<!-- The Templates plugin is included to render the upload/download listings-->
+<script src="./fenxi_files/tmpl.js"></script>
+
+<!-- CLASSY LOADER-->
+<!--<script src="./fenxi_files/Chart.js/Chart.js"></script>-->
+
+<script src="./fenxi_files/demo-search.js"></script>
+<!-- CHOSEN-->
+<script src="./fenxi_files/chosen.jquery.min.js"></script>
+<!-- MOMENT JS-->
+<script src="./fenxi_files/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="./fenxi_files/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="./fenxi_files/WdatePicker.js" charset="UTF-8"></script>
+<!-- CLASSY LOADER-->
+<script src="./fenxi_files/jquery.classyloader.min.js"></script>
+
+<!-- FLOT CHART-->
+<!--   <script src="./fenxi_files/Flot/jquery.flot.js"></script>
+   <script src="./fenxi_files/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+   <script src="./fenxi_files/Flot/jquery.flot.resize.js"></script>
+   <script src="./fenxi_files/Flot/jquery.flot.pie.js"></script>
+   <script src="./fenxi_files/Flot/jquery.flot.time.js"></script>
+   <script src="./fenxi_files/Flot/jquery.flot.categories.js"></script>
+
+   <script src="./fenxi_files/flot-spline/js/jquery.flot.spline.min.js"></script>
+
+   <script src="./fenxi_files/flot-spline/js/jquery.flot.spline.min.js"></script>-->
+<!--shouye-->
+<script src="./fenxi_files/bootstrap-tagsinput.min.js"></script>
+<!--shouye end-->
+
+<!-- TAGS INPUT-->
+<script src="./fenxi_files/bootstrap-tagsinput.min.js"></script>
+        <!-- =============== APP SCRIPTS ===============-->
+<script src="./fenxi_files/app.js"></script>
+</body></html>

@@ -1,0 +1,174 @@
+.cr {
+  cursor: pointer;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+/**会员详情 by zy*/
+.member_box {
+  width: 70%;
+  height: 100%;
+  background: url(/assets/img/user_box_bg1.jpg) no-repeat;
+  /*rgba(0,0,0,0.8)*/
+  background-size: cover;
+  position: fixed;
+  z-index: 10001;
+  transition: .8s all ease;
+  top: 0;
+  overflow: hidden;
+}
+.member_show_tab {
+  width: 20px;
+  height: 100px;
+  background: #999;
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  margin-top: -25px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 3px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+/** 会员详情*/
+.contact {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+}
+.box_top {
+  height: 15%;
+  position: relative;
+}
+.box_bottom {
+  height: 85%;
+  color: #000;
+}
+.box_bottom .left_area {
+  width: 70%;
+  background-color: #FAFAFA;
+  padding: 0 10px;
+  color: #666;
+}
+.box_bottom .right_area {
+  width: 30%;
+  background-color: #fff;
+  padding: 15px;
+  color: #555;
+}
+.left_area,
+.right_area {
+  height: 100%;
+}
+.left_area > div {
+  text-align: center;
+}
+.left_area .header {
+  margin-top: -60px;
+}
+.header img {
+  width: 120px;
+  height: 120px;
+  border: 7px solid #F7F7F7;
+  border-radius: 60px;
+}
+.username {
+  margin-top: 12px;
+  font-size: 26px;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+.detail {
+  margin-top: 10px;
+}
+.detail .area {
+  padding: 0 12px;
+}
+.map_box {
+  margin-top: 40px;
+  border-top: 1px solid #c5c5c5;
+  text-align: center;
+}
+.logo {
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  color: #b1b1b1;
+  font-size: 16px;
+  margin: 0 auto;
+  margin-top: -20px;
+  background-color: #FAFAFA;
+}
+/** 百度地图 */
+#baidu_map {
+  margin: 20px 10px 0px 10px;
+  height: 300px;
+}
+.icon_box {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(72, 229, 250, 0.5);
+  border-radius: 40px;
+  border: 5px solid #fff;
+}
+.top .item {
+  width: 32%;
+  margin-right: 2%;
+  background-color: #FAFAFA;
+  float: left;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.top .no_margin {
+  margin: 0;
+}
+.item .num {
+  padding: 20px 0 15px 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+.item .action {
+  padding: 0 0 15px 0;
+  font-size: 12px;
+}
+.right_area .bottom {
+  margin-top: 20px;
+}
+.bottom .title {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 8px;
+  color: #b1b1b1;
+  border-bottom: 1px solid #ccc;
+}
+.bottom .content {
+  height: 390px;
+  padding: 0 10px;
+  font-size: 12px;
+  overflow-y: auto;
+}
+.content .list_row {
+  margin: 14px 0 0 0;
+}
+/**遮罩层*/
+.back_mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  z-index: 9000;
+}
+
+/*# sourceMappingURL=user_detail.css.map */

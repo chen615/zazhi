@@ -1,0 +1,216 @@
+.cr {
+  cursor: pointer;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+.wrapper {
+  background-color: #fff;
+}
+/**头部*/
+.account_top {
+  font-size: 14px;
+  color: #515253;
+}
+.j_right {
+  padding: 0 10px;
+  font-family: "songti";
+  color: #515253;
+  font-weight: bold;
+}
+/**搜索条件*/
+.today_data_box {
+  width: 98%;
+  color: #000;
+  margin-left: 15px;
+}
+.pull-right {
+  height: 20px;
+  line-height: 20px;
+}
+.pull-right span {
+  color: #000;
+  float: left;
+  padding-right: 5px;
+  font-size: 14px;
+}
+.fa-minus:before {
+  content: "\f102";
+  font-size: 20px;
+  color: #3C3C3C;
+}
+.fa-plus:before {
+  content: "\f103";
+  font-size: 20px;
+  color: #3C3C3C;
+}
+/**数据折线图*/
+.data_line_top {
+  height: 44px;
+  line-height: 44px;
+  color: #000;
+}
+.data_line_top .bottom {
+  font-size: 12px;
+}
+.data_line_top span {
+  padding: 0 20px 0 0;
+  cursor: pointer;
+}
+.data_line_top span.cur {
+  color: #e67e22;
+}
+#reservation {
+  background: #fff;
+}
+#dateSelect {
+  margin: 10px 0 0 0 !important;
+}
+.compare {
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid #ccc;
+  font-size: 10px;
+  padding: 0 0 0 8px;
+  border-radius: 3px;
+  position: relative;
+  margin-right: 50px;
+}
+.compare > .compare_content {
+  position: absolute;
+  left: 0;
+  top: 23px;
+  width: 110px;
+  z-index: 9999;
+  text-align: left;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+  box-shadow: 3px 3px 5px #888888;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  display: none;
+}
+.compare > span {
+  display: inline-block;
+  cursor: pointer;
+  padding: 2px 8px 2px 8px;
+}
+.compare_content span {
+  display: inline-block;
+}
+.compare_content input {
+  margin: 0;
+  vertical-align: middle;
+}
+.hb {
+  color: #F89406;
+  display: none;
+}
+.hb_td {
+  display: none;
+}
+.sum_hide {
+  display: none;
+}
+.red_num {
+  color: #f00;
+}
+.green_num {
+  color: #68C02D;
+}
+/**提醒*/
+.notice {
+  font-size: 12px;
+  color: #b5b5b5;
+  padding-bottom: 30px;
+}
+.hidden {
+  display: none;
+}
+/*panel样式*/
+.summary tr td {
+  background: #f7f7f7;
+}
+.sort_desc {
+  width: 9px;
+  height: 12px;
+  background: url(/assets/img/sort_down.png);
+}
+.sort_asc {
+  width: 9px;
+  height: 12px;
+  background: url(/assets/img/sort_up.png);
+}
+/**弹出层*/
+.detail_box {
+  width: 70%;
+  height: 100%;
+  background: #fff;
+  position: fixed;
+  z-index: 10001;
+  transition: .8s all ease;
+  top: 0;
+  overflow: hidden;
+  right: -2000px;
+  box-shadow: -3px 0px 3px #000000;
+}
+.member_show_tab {
+  width: 20px;
+  height: 100px;
+  background: #999;
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  margin-top: -25px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 3px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+.detail_top {
+  padding: 12px 20px;
+  border-bottom: 1px solid #ccc;
+}
+.channel_name {
+  color: #656565;
+}
+.tablebox .table_head {
+  padding: 10px 0 10px 0;
+}
+.interval {
+  color: #656565;
+}
+.detail_total {
+  padding-top: 5px;
+}
+/**遮罩层*/
+.back_mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  z-index: 9000;
+}
+.margin_l_20 {
+  margin-left: 20px;
+}
+.margin_t_30 {
+  margin-top: 30px;
+}
+
+/*# sourceMappingURL=channel_analysis.css.map */

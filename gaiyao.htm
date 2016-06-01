@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://e.tvm.cn/datacenter/outline -->
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Bootstrap Admin App + jQuery">
+<meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>电视直通车-自助投放平台</title>
+<!-- =============== VENDOR STYLES ===============-->
+<!-- =============== BOOTSTRAP STYLES ===============-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap.css" id="bscss">
+<!-- SWEET ALERT-->
+<link rel="stylesheet" href="./fenxi_files/sweetalert.css">
+<!-- FONT AWESOME-->
+<link rel="stylesheet" href="./fenxi_files/font-awesome.min.css">
+<!-- ANIMATE.CSS-->
+<link rel="stylesheet" href="./fenxi_files/animate.min.css">
+<!-- WHIRL (spinners)-->
+<link rel="stylesheet" href="./fenxi_files/whirl.css">
+<!-- =============== PAGE VENDOR STYLES ===============-->
+
+<!-- =============== APP STYLES ===============-->
+<link rel="stylesheet" href="./fenxi_files/app-new.css" id="maincss">
+<link rel="stylesheet" href="./fenxi_files/theme-i.css" id="maincss">
+<!-- Loaders.css-->
+<link rel="stylesheet" href="./fenxi_files/loaders.css">
+<script src="./fenxi_files/jquery.js"></script>
+<script src="./fenxi_files/jquery.form.js"></script>
+<!-- Spinkit-->
+<link rel="stylesheet" href="./fenxi_files/spinkit.css">
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars-->
+<link rel="stylesheet" href="./fenxi_files/jquery.fileupload.css">
+<link rel="stylesheet" type="text/css" media="all" href="./fenxi_files/daterangepicker-bs3.css">
+<!--   <script type="text/javascript" src="/assets/lib/Angle3.0/vendor/daterangepicker/jquery-1.8.3.min.js"></script>-->
+<script type="text/javascript" src="./fenxi_files/moment.js"></script>
+<script type="text/javascript" src="./fenxi_files/daterangepicker.js"></script>
+<!-- DATETIMEPICKER-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap-datetimepicker.min.css">
+<!-- SLIDER CTRL-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap-slider.min.css">
+<!-- CHOSEN-->
+<link rel="stylesheet" href="./fenxi_files/chosen.min.css">
+<!-- TAGS INPUT-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap-tagsinput.css">
+<!--shouye-->
+<link rel="stylesheet" href="./fenxi_files/simple-line-icons.css">
+<link rel="stylesheet" href="./fenxi_files/weather-icons.min.css">
+<!--shouye end-->
+
+
+<style type="text/css"></style><link href="./fenxi_files/WdatePicker.css" rel="stylesheet" type="text/css"></head>
+
+<body>
+<div id="myModal_publish" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 id="myModalLabel" class="modal-title">修改预算</h4>
+            </div>
+            <div class="modal-body">
+                <div>有<label id="failTotal"></label>个计划修改失败。<!--计划出价不可低于出价底价。--></div>
+                <div id="showFail">哪些计划修改失败？</div>
+                <ul class="errorList">
+                    <!--<li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>-->
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper">
+
+    <!-- Top header navbar-->
+          <header class="topnavbar-wrapper">
+         <!-- START Top Navbar-->
+         <nav role="navigation" class="navbar topnavbar">
+            <!-- START navbar header-->
+            <input type="hidden" value="http://api.dsp.tvm.cn" name="adcloud-url" id="adcloud-url">
+            <input type="hidden" value="http://dmp.tvm.cn" name="adm-url" id="adm-url">
+            <div class="navbar-header">
+               <a href="http://e.tvm.cn/" class="navbar-brand">
+                  <div class="brand-logo">
+
+                     <span style="float: left; color:#fff;height:46px; line-height:46px; margin-top:7px; font-size:16px;">电视直通车-自助投放平台</span>
+                  </div>
+                  <div class="brand-logo-collapsed">
+                     <img src="./fenxi_files/logo-small.png" alt="电视直通车-自助投放平台" class="img-responsive">
+                  </div>
+               </a>
+            </div>
+            <!-- END navbar header-->
+            <!-- START Nav wrapper-->
+            <div class="nav-wrapper">
+               <!-- START Left navbar-->
+                                                                                                                                                                                                                                                               <!-- END Left navbar-->
+               <!-- START Right Navbar-->
+               <ul class="nav navbar-nav navbar-right" style="margin-right:10px;">
+                  <!-- Search icon-->
+                  <!--<li>
+                     <a href="#" data-search-open="">
+                        <em class="icon-magnifier"></em>
+                     </a>
+                  </li>-->
+                  <!-- START Offsidebar button-->
+                  <li>
+                     <a href="javascript:;" -data-search-open="" class="nickname">
+                        <em data-localize="sidebar.heading.HEADER">欢迎，20134560570</em>
+                     </a>
+                  </li>
+                  <!-- <li>
+                     <a href="http://yaomall.tvm.cn" target="_blank">
+                        <em>我的微商城</em>
+                     </a>
+                  </li> -->
+                  <li class="dropdown dropdown-list" style="display:none">
+                      <a href="http://e.tvm.cn/message" style="box-shadow: none;">
+                        <em class="icon-bell"></em>
+                        <div class="label label-danger" msg="num" style="background: #27c24c"></div>
+                      </a>
+                      <!-- START Dropdown menu-->
+                      <ul class="dropdown-menu animated flipInX">
+                         <li id="msg-list">
+                            <!-- START list group-->
+                            <div class="list-group">
+                               <!-- list item-->
+                         </li>
+                      </ul>
+                      <!-- END Dropdown menu-->
+                  </li>
+                  <li>
+                     <a href="http://e.tvm.cn/auth/logout" data-no-persist="true" title="退出">
+                        <em class="icon-notebook"></em>
+                     </a>
+                  </li>
+                  <!-- END Offsidebar menu-->
+               </ul>
+               <!-- END Right Navbar-->
+            </div>
+            <!-- END Nav wrapper-->
+            <!-- START Search form-->
+            <form role="search" action="http://e.tvm.cn/datacenter/search.html" class="navbar-form">
+               <div class="form-group has-feedback">
+                  <input type="text" placeholder="Type and hit enter ..." class="form-control">
+                  <div data-search-dismiss="" class="fa fa-times form-control-feedback"></div>
+               </div>
+               <button type="submit" class="hidden btn btn-default">Submit</button>
+            </form>
+            <!-- END Search form-->
+         </nav>
+         <!-- END Top Navbar-->
+         <style>
+            .nav-wrapper ul li .nickname:hover{
+               cursor:default;
+            }
+            .msg-con{
+               width: 300px;
+               padding: 5px 0px;
+               overflow: hidden;
+               white-space: nowrap;
+               text-overflow: ellipsis;
+               font-size: 12px;
+            }
+            .dropdown-list .msg-more{
+               padding: 12px 20px;
+               color: #23b7e5;
+               text-align: right;
+            }
+            .dropdown-list .msg-more:hover{
+               text-decoration: underline;
+               color: #23b7e5;
+            }
+         </style>
+
+      </header>
+            <!-- Sidebar-->
+          <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <div class="aside-inner">
+            <nav data-sidebar-anyclick-close="" class="sidebar" id="sidebar">
+               <!-- START sidebar nav-->
+               <ul class="nav" id="nav">
+                  <!-- Iterates over all sidebar items-->
+
+                  <!-- <li class=" ">
+                     <a href="/material" title="方案管理">
+                        <em class="icon-layers"></em>
+                        <span data-localize="sidebar.nav.menu.MENU">方案管理</span>
+                     </a>
+                  </li> -->
+
+                  <li class="active">
+                     <a href="http://e.tvm.cn/datacenter/outline#datacenter" title="数据中心" data-toggle="collapse" aria-expanded="true">
+                        <em class="icon-graph"></em>
+                        <span data-localize="sidebar.nav.menu.MENU">数据中心</span>
+                     </a>
+                     <ul id="datacenter" class="nav sidebar-subnav collapse in" aria-expanded="true">
+                        <li class="sidebar-subnav-header">数据中心</li>
+
+                        <li class="active">
+                           <a href="gaiyao.htm" title="数据概要">
+                              <span>数据概要</span>
+                           </a>
+                        </li>
+
+                        <li>
+                           <a href="mingxi.htm" title="曝光明细">
+                              <span>曝光明细</span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="fenxi.htm" title="投放分析">
+                              <span>投放分析</span>
+                           </a>
+                        </li>
+                        <!-- <li class=" ">
+                           <a href="/datacenter/user/profile" title="用户图谱">
+                              <span>用户图谱</span>
+                           </a>
+                        </li> -->
+                     </ul>
+                  </li>
+
+               </ul>
+               <!-- END sidebar nav-->
+            </nav>
+         </div>
+         <!-- END Sidebar (left)-->
+      </aside>
+
+
+            <!-- Offsidebar-->
+          <aside class="offsidebar">
+         <!-- START Off Sidebar (right)-->
+         <nav>
+            <div role="tabpanel">
+               <!-- Nav tabs-->
+               <ul role="tablist" class="nav nav-tabs nav-justified">
+                  <li role="presentation" class="active">
+                     <a href="http://e.tvm.cn/datacenter/outline#app-settings" aria-controls="app-settings" role="tab" data-toggle="tab">
+                        <em class="icon-equalizer fa-lg"></em>
+                     </a>
+                  </li>
+                  <li role="presentation">
+                     <a href="http://e.tvm.cn/auth/logout">
+                        <em class="icon-users fa-lg"></em>
+                     </a>
+                  </li>
+               </ul>
+               <!-- Tab panes-->
+               <div class="tab-content">
+                  <div id="app-settings" role="tabpanel" class="tab-pane fade in active">
+                     <h3 class="text-center text-thin">Tab 1</h3>
+                  </div>
+                  <div id="app-chat" role="tabpanel" class="tab-pane fade">
+                     <h3 class="text-center text-thin">Tab 2</h3>
+                  </div>
+               </div>
+            </div>
+         </nav>
+         <!-- END Off Sidebar (right)-->
+      </aside>
+            <!-- Main section-->
+        <section>
+        <link rel="stylesheet" href="./fenxi_files/publish-9f64b1c2.css">
+        <link rel="stylesheet" href="./fenxi_files/outline-f023f299.css">
+
+<div class="location">
+    <span class="put"> 数据概要</span>
+
+</div>
+
+        <!-- Page content-->
+         <div class="content-wrapper">
+
+            <!-- 今日数据start -->
+
+            <!-- <div class="row">
+
+
+            <div class="row">
+
+
+                <div class="col-lg-8 today_data_box ">
+                    <div id="data_box">
+                        <div class="data_item">
+                            <div class="item_title" style="padding-left:100px">投放次数</div>
+                            <div class="data_content">
+                                <div class="special_detail"><span class="detail_title" style="width:100px;">今日</span><span class="" id="most_pubnums">0</span></div>
+                            </div>
+                        </div>
+                        <div class="data_item">
+                            <div class="item_title">展现（PV）</div>
+                            <div class="data_content">
+                                <div class="data_detail" id="most_pv">0</div>
+                            </div>
+                        </div>
+                        <div class="data_item">
+                            <div class="item_title">覆盖人群</div>
+                            <div class="data_content">
+                                <div class="data_detail" id="most_uv2">0</div>
+                            </div>
+                        </div>
+
+                        <div class="data_item">
+                            <div class="item_title">点击</div>
+                            <div class="data_content">
+                                <div class="data_detail" id="most_uv">0</div>
+                            </div>
+                        </div>
+                        <div class="data_item">
+                            <div class="item_title">点击率</div>
+                            <div class="data_content">
+                                <div class="data_detail" id="most_vv">0</div>
+                            </div>
+                        </div>
+                        <div class="data_item">
+                            <div class="item_title">总消费（元）</div>
+                            <div class="data_content" style="border:0px">
+                                <div class="data_detail" id="most_consumption">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 今日数据end -->
+
+            <!-- 数据折线图start -->
+            <div class="data_line_box margin_t_20">
+              <!--  时间选择 b-->
+                <div class="data_line_top" style="height:50px">
+                    <span>选择时间:</span> <span class="cur" date="0">今天</span><span date="1">昨天</span><span date="7">最近7天</span>
+                    <input type="text" readonly="" style="width: 210px; display: inline; border: 1px solid rgb(236, 236, 236);" name="reservation" id="reservation" class="form-control " value="">
+                    <span class="days"></span>
+                <!--<div style="float:right"><button type="button" class="btn btn-default " id="out_report" >导出账户报告</button></div>-->
+                    <!-- <div class="compare plan">
+                        <div style="cursor:normal" class="sort_text">点击</div>
+                        <div class="sel_btn"><span class="fa fa-caret-down"></span></div>
+                        <div class="sort_content">
+
+                            <span class="cn">点击</span>
+
+                            <span class="pv">展现</span>
+
+                            <span class="suv">独立用户</span>
+
+                        </div>
+                    </div> -->
+
+                </div>
+                <div class="panel widget" style="display:none">
+                   <div class="row row-table">
+                      <div class="col-md-2 col-sm-3 col-xs-6 text-center bg-info pv-xl" style="display:none">
+                          <div class="title">投放</div>
+                          <div class="put"><span class="put_count" id="most_pubnums">0</span>次</div>
+                      </div>
+                      <div class="col-sm-3 hidden-xs pv text-center br">
+                          <div class="count" id="most_pv">0</div>
+                          <div class="name">曝光</div>
+                      </div>
+                      <!-- <div class="col-md-2 hidden-sm hidden-xs pv text-center br">
+                          <div class="count" id="most_new">0</div>
+                          <div class="name">展现用户<div class="percent">(新用户:<span id="new_h">0</span>)</div></div>
+                      </div> -->
+                      <div class="col-sm-3 hidden-xs pv text-center br">
+                          <div class="count" id="most_cn">0</div>
+                          <div class="name">点击</div>
+                      </div>
+                      <div class="col-sm-3 hidden-xs pv text-center br">
+                          <div class="count" id="most_clickrate">0</div>
+                          <div class="name">点击率</div>
+                      </div>
+                      <!-- <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+                          <div class="count" id="most_suv">0</div>
+                          <div class="name">点击用户</div>
+                      </div> -->
+                      <div class="col-sm-3 hidden-sm hidden-xs pv text-center">
+                          <div class="count" id="most_consumption">0</div>
+                          <div class="name">总消费</div>
+                      </div>
+                   </div>
+                </div>
+                <!--  时间选择 e-->
+                <div class="row">
+                    <div class=" line_box panel panel-default ">
+                        <div class="panel-heading">
+                           <div class="panel-title">数据趋势</div>
+                        </div>
+
+                    <div id="chartToggle" style="z-index: 100; display: block;">
+                        <div class="toggle onTime current">时</div>
+                        <div class="toggle onDate">日</div>
+                    </div>
+
+                        <div id="data_box_line" style="width: 100%; height: 250px; margin: 10px 0px 15px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);" _echarts_instance_="1464158335318"><div style="position: relative; overflow: hidden; width: 988px; height: 250px;"><div data-zr-dom-id="bg" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 988px; height: 250px; -webkit-user-select: none;"></div><canvas width="988" height="250" data-zr-dom-id="0" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 988px; height: 250px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="988" height="250" data-zr-dom-id="1" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 988px; height: 250px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="988" height="250" data-zr-dom-id="_zrender_hover_" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 988px; height: 250px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><div class="echarts-tooltip zr-element" style="position: absolute; display: none; border: 0px solid rgb(51, 51, 51); white-space: nowrap; transition: left 0.4s, top 0.4s; border-radius: 4px; color: rgb(255, 255, 255); padding: 5px; left: 256px; top: 76px; background-color: rgb(192, 192, 192);"><div style="padding-bottom:10px;background: #ffffff; color: #333;"><p style="text-align: center;background: #E9E9E9; padding:0 10px;"> 03:00
+2016-05-20</p><table style="width: 100%;" class="msgbox"><tbody><tr><td class="col-md-6" style="color:#e67e22">曝光</td><td class="col-md-6" style="color:#e67e22; text-align: right;">55</td></tr><tr><td class="col-md-6" style="color:#2E91DA">点击</td><td class="col-md-6" style="color:#2E91DA; text-align: right;">4</td></tr></tbody></table></div></div></div></div>
+                    </div>
+                </div>
+                <!--div class="data_line_top" >
+                    <div class="bottom">
+                        <span class="green_box"></span>&nbsp;&nbsp;<span id="data_range"></span>
+                        <span class="b_r_tip">7天有效展现趋势</span>
+                    </div>
+
+                </div-->
+            </div>
+            <!-- 数据折线图end -->
+
+            <!-- 6个图表开始 -->
+            <div class="row">
+
+                <div class=" charts_item panel panel-default">
+                    <div class="panel-heading">
+                           <div class="panel-title">最大贡献频道 Top 5</div>
+                        </div>
+                    <div id="chart2" class="chart_box" style="height: 220px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background-color: rgba(0, 0, 0, 0);" _echarts_instance_="1464158335319"><div style="position: relative; overflow: hidden; width: 173px; height: 220px;"><div data-zr-dom-id="bg" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none;"></div><canvas width="173" height="220" data-zr-dom-id="0" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="173" height="220" data-zr-dom-id="1" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="173" height="220" data-zr-dom-id="_zrender_hover_" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas></div></div>
+                    <div class="chart_info" id="chart_info2">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="8%">&nbsp;</th>
+                                    <th width="7%">&nbsp;</th>
+                                    <th>频道</th>
+                                    <th>曝光</th>
+                                    <th>点击</th>
+                                    <!-- <th >点击贡献度</th> -->
+                                </tr>
+                            </thead>
+                            <tbody id="data_rows2"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                   <div class=" charts_item panel panel-default" style="position:relative">
+                    <div class="panel-heading">
+                           <div class="panel-title">热点地区 Top 5</div>
+                        </div>
+
+                    <div id="chart4" class="chart_box chart_box_map" _echarts_instance_="1464158335324" style="-webkit-tap-highlight-color: transparent; -webkit-user-select: none; background-color: rgba(0, 0, 0, 0);"><div style="position: relative; overflow: hidden; width: 197px; height: 280px;"><div data-zr-dom-id="bg" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 197px; height: 280px; -webkit-user-select: none;"></div><canvas width="197" height="280" data-zr-dom-id="0" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 197px; height: 280px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="197" height="280" data-zr-dom-id="1" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 197px; height: 280px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="197" height="280" data-zr-dom-id="_zrender_hover_" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 197px; height: 280px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas></div></div>
+
+                    <div class="chart_info chart_info_map" id="chart_info4">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="5%">&nbsp;</th>
+                                    <th width="15%">地区</th>
+                                    <th width="30%">曝光</th>
+                                    <th>点击</th>
+                                    <!-- <th width="32%">&nbsp;</th>
+                                    <th width="18%">&nbsp;</th> -->
+                                </tr>
+                            </thead>
+                            <tbody id="data_rows4"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="map_tip">数据来源：一级地区数据</div>
+
+                    <div class="clear"></div>
+                </div>
+
+
+                <div class=" charts_item panel panel-default">
+                    <div class="panel-heading">
+                           <div class="panel-title">覆盖人群属性</div>
+                        </div>
+                    <div id="chart5" class="chart_box" style="height: 280px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background-color: rgba(0, 0, 0, 0);" _echarts_instance_="1464158335323"><div style="position: relative; overflow: hidden; width: 173px; height: 280px;"><div data-zr-dom-id="bg" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 280px; -webkit-user-select: none;"></div><canvas width="173" height="280" data-zr-dom-id="0" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 280px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="173" height="280" data-zr-dom-id="1" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 280px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="173" height="280" data-zr-dom-id="_zrender_hover_" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 280px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas></div></div>
+
+                    <div class="chart_info" id="chart_info5">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="10%">&nbsp;</th>
+                                    <th width="30%">性别</th>
+                                    <th width="20%">曝光</th>
+                                    <th>点击</th>
+                                    <!-- <th width="20%">&nbsp;</th>
+                                    <th width="20%">&nbsp;</th> -->
+                                </tr>
+                            </thead>
+                            <tbody id="data_rows5"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class=" charts_item panel panel-default">
+                    <div class="panel-heading">
+                           <div class="panel-title">设备系统</div>
+                        </div>
+                    <div id="chart6" class="chart_box" style="height: 220px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background-color: rgba(0, 0, 0, 0);" _echarts_instance_="1464158335321"><div style="position: relative; overflow: hidden; width: 173px; height: 220px;"><div data-zr-dom-id="bg" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none;"></div><canvas width="173" height="220" data-zr-dom-id="0" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="173" height="220" data-zr-dom-id="1" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="173" height="220" data-zr-dom-id="_zrender_hover_" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas></div></div>
+
+                    <div class="chart_info" id="chart_info6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="10%">&nbsp;</th>
+                                    <th width="25%">系统</th>
+                                    <th width="25%">曝光</th>
+                                    <th>点击</th>
+                                    <!-- <th width="20%">&nbsp;</th>
+                                    <th width="20%">&nbsp;</th> -->
+                                </tr>
+                            </thead>
+                            <tbody id="data_rows6"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+
+                <div class=" charts_item panel panel-default">
+                    <div class="panel-heading">
+                           <div class="panel-title">运营商</div>
+                        </div>
+
+                    <div id="chart7" class="chart_box" style="height: 220px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; background-color: rgba(0, 0, 0, 0);" _echarts_instance_="1464158335322"><div style="position: relative; overflow: hidden; width: 173px; height: 220px;"><div data-zr-dom-id="bg" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none;"></div><canvas width="173" height="220" data-zr-dom-id="0" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="173" height="220" data-zr-dom-id="1" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas><canvas width="173" height="220" data-zr-dom-id="_zrender_hover_" class="zr-element" style="position: absolute; left: 0px; top: 0px; width: 173px; height: 220px; -webkit-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas></div></div>
+
+                    <div class="chart_info" id="chart_info7">
+                        <table>
+                            <thead>
+                                <tr>
+
+                                    <th width="7%">&nbsp;</th>
+                                    <th width="35%">运营商</th>
+                                    <th width="30%">曝光</th>
+                                    <th>点击</th>
+                                </tr>
+                            </thead>
+                            <tbody id="data_rows7"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                <!-- <div class=" charts_item panel panel-default">
+                    <div class="panel-heading">
+                           <div class="panel-title">第三方链接/商城商品/任务 Top 5</div>
+                        </div>
+                    <div id="chart3" class="chart_box" style="height:250px;"></div>
+
+                    <div class="chart_info" id="chart_info3">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width="8%">&nbsp;</th>
+                                    <th width="7%">&nbsp;</th>
+                                    <th width="45%">名称</th>
+                                    <th width="30%">点击/完成</th>
+                                    <th width="10%">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody id="data_rows3" >
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div> -->
+
+            </div>
+
+         </div>
+
+    </section>
+     <div class="bodybg_hover">
+        <div class="msgbox_down">
+          <div class="panel ">
+                        <div class="panel-heading">导出离线报告
+                            <a href="http://e.tvm.cn/datacenter/outline#" class="close">  <em class="fa fa-times"></em></a>
+                        </div>
+                        <div class="panel-body report_tip">
+                         <!-- <ul class="msgtab">
+                            <li class="l on" rel="7">最近7天</li>
+                            <li class="l"  rel="15">最近15天</li>
+                            <li rel="30">最近30天</li>
+                        </ul>
+                        <div class="msgtime">
+                            <p><span>投放开始：</span> <input class="form-control from " type="text" readonly="readonly"></p>
+                            <p><span>投放结束：</span> <input class="form-control end " type="text" readonly="readonly"></p>
+                        </div> -->
+
+                        </div>
+                         <div class="panel-footer"><button type="button" class="mb-sm btn btn-default cancel">取消</button>
+                            <button type="button" class="mb-sm btn btn-success outreport">确认导出</button>
+                         </div>
+                     </div>
+     </div>
+ </div>
+
+    <!-- echarts 地图开始 -->
+    <script src="./fenxi_files/echarts.js"></script>
+    <script src="./fenxi_files/jquery.min.js"></script>
+    <script src="./fenxi_files/outline-a4367c5f.js"></script>
+    <script src="./fenxi_files/daterangepicker.js"></script>
+
+
+            <!-- Page footer-->
+
+         <!-- <footer id="footer" style="">
+        <span>版权所有© 天脉聚源(北京)传媒科技有限公司2008-2016保留一切权利</span>
+    </footer> -->
+</div>
+
+<!-- =============== VENDOR SCRIPTS ===============-->
+<!-- JQUERY-->
+
+<!-- SLIDER CTRL-->
+<script src="./fenxi_files/bootstrap-slider.min.js"></script>
+
+<!-- MODERNIZR-->
+<script src="./fenxi_files/modernizr.js"></script>
+
+<!-- BOOTSTRAP-->
+<script src="./fenxi_files/bootstrap.js"></script>
+<!-- STORAGE API-->
+<script src="./fenxi_files/jquery.storageapi.js"></script>
+<!-- JQUERY EASING-->
+<script src="./fenxi_files/jquery.easing.js"></script>
+<!-- ANIMO-->
+<script src="./fenxi_files/animo.js"></script>
+<!-- LOCALIZE-->
+<script src="./fenxi_files/jquery.localize.js"></script>
+<!-- RTL demo-->
+<script src="./fenxi_files/demo-rtl.js"></script>
+<!-- SLIMSCROLL-->
+<script src="./fenxi_files/jquery.slimscroll.min.js"></script>
+<!-- SCREENFULL-->
+<script src="./fenxi_files/screenfull.js"></script>
+
+<!-- SWEET ALERT-->
+<script src="./fenxi_files/sweetalert.min.js"></script>
+<!-- =============== PAGE VENDOR SCRIPTS ===============-->
+<!-- PARSLEY-->
+<script src="./fenxi_files/parsley.min.js"></script>
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included-->
+<script src="./fenxi_files/widget.js"></script>
+<!-- The Templates plugin is included to render the upload/download listings-->
+<script src="./fenxi_files/tmpl.js"></script>
+
+<!-- CLASSY LOADER-->
+<!--<script src="/assets/lib/Angle3.0/vendor/Chart.js/Chart.js"></script>-->
+
+<script src="./fenxi_files/demo-search.js"></script>
+<!-- CHOSEN-->
+<script src="./fenxi_files/chosen.jquery.min.js"></script>
+<!-- MOMENT JS-->
+<script src="./fenxi_files/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="./fenxi_files/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="./fenxi_files/WdatePicker.js" charset="UTF-8"></script>
+<!-- CLASSY LOADER-->
+<script src="./fenxi_files/jquery.classyloader.min.js"></script>
+
+<!-- FLOT CHART-->
+<!--   <script src="/assets/lib/Angle3.0/vendor/Flot/jquery.flot.js"></script>
+   <script src="/assets/lib/Angle3.0/vendor/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+   <script src="/assets/lib/Angle3.0/vendor/Flot/jquery.flot.resize.js"></script>
+   <script src="/assets/lib/Angle3.0/vendor/Flot/jquery.flot.pie.js"></script>
+   <script src="/assets/lib/Angle3.0/vendor/Flot/jquery.flot.time.js"></script>
+   <script src="/assets/lib/Angle3.0/vendor/Flot/jquery.flot.categories.js"></script>
+
+   <script src="/assets/lib/Angle3.0/vendor/flot-spline/js/jquery.flot.spline.min.js"></script>
+
+   <script src="/assets/lib/Angle3.0/vendor/flot-spline/js/jquery.flot.spline.min.js"></script>-->
+<!--shouye-->
+<script src="./fenxi_files/bootstrap-tagsinput.min.js"></script>
+<!--shouye end-->
+
+<!-- TAGS INPUT-->
+<script src="./fenxi_files/bootstrap-tagsinput.min.js"></script>
+        <!-- =============== APP SCRIPTS ===============-->
+<script src="./fenxi_files/app.js"></script>
+
+
+
+
+
+<div class="daterangepicker dropdown-menu show-calendar opensright"><div class="ranges"><div class="range_inputs"><div class="daterangepicker_start_input"><label for="daterangepicker_start">从</label><input class="input-mini" type="text" name="daterangepicker_start" value="" disabled="disabled"></div><div class="daterangepicker_end_input"><label for="daterangepicker_end">到</label><input class="input-mini" type="text" name="daterangepicker_end" value="" disabled="disabled"></div><button class="applyBtn btn btn-small btn-success">确定</button>&nbsp;<button class="cancelBtn btn btn-small btn-default">取消</button></div></div><div class="clear"></div><div class="calendar right"><div class="calendar-date"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">五月 2016</th><th class="next available"><i class="fa fa-arrow-right icon-arrow-right glyphicon glyphicon-arrow-right"></i></th></tr><tr><th>周日</th><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>周六</th></tr></thead><tbody><tr><td class="off disabled" data-title="r0c0">24</td><td class="off disabled" data-title="r0c1">25</td><td class="off disabled" data-title="r0c2">26</td><td class="off disabled" data-title="r0c3">27</td><td class="off disabled" data-title="r0c4">28</td><td class="off disabled" data-title="r0c5">29</td><td class="off disabled" data-title="r0c6">30</td></tr><tr><td class="off disabled" data-title="r1c0">1</td><td class="off disabled" data-title="r1c1">2</td><td class="off disabled" data-title="r1c2">3</td><td class="off disabled" data-title="r1c3">4</td><td class="off disabled" data-title="r1c4">5</td><td class="off disabled" data-title="r1c5">6</td><td class="off disabled" data-title="r1c6">7</td></tr><tr><td class="off disabled" data-title="r2c0">8</td><td class="off disabled" data-title="r2c1">9</td><td class="off disabled" data-title="r2c2">10</td><td class="off disabled" data-title="r2c3">11</td><td class="off disabled" data-title="r2c4">12</td><td class="off disabled" data-title="r2c5">13</td><td class="off disabled" data-title="r2c6">14</td></tr><tr><td class="off disabled" data-title="r3c0">15</td><td class="off disabled" data-title="r3c1">16</td><td class="off disabled" data-title="r3c2">17</td><td class="off disabled" data-title="r3c3">18</td><td class="available in-range" data-title="r3c4">19</td><td class="available in-range" data-title="r3c5">20</td><td class="available in-range" data-title="r3c6">21</td></tr><tr><td class="available in-range" data-title="r4c0">22</td><td class="available in-range" data-title="r4c1">23</td><td class="available in-range" data-title="r4c2">24</td><td class="off disabled" data-title="r4c3">25</td><td class="off disabled" data-title="r4c4">26</td><td class="off disabled" data-title="r4c5">27</td><td class="off disabled" data-title="r4c6">28</td></tr><tr><td class="off disabled" data-title="r5c0">29</td><td class="off disabled" data-title="r5c1">30</td><td class="off disabled" data-title="r5c2">31</td><td class="off disabled" data-title="r5c3">1</td><td class="off disabled" data-title="r5c4">2</td><td class="off disabled" data-title="r5c5">3</td><td class="off disabled" data-title="r5c6">4</td></tr></tbody></table></div></div><div class="calendar left"><div class="calendar-date"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-arrow-left icon-arrow-left glyphicon glyphicon-arrow-left"></i></th><th colspan="5" class="month">五月 2016</th><th class="next available"><i class="fa fa-arrow-right icon-arrow-right glyphicon glyphicon-arrow-right"></i></th></tr><tr><th>周日</th><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>周六</th></tr></thead><tbody><tr><td class="available off" data-title="r0c0">24</td><td class="available off" data-title="r0c1">25</td><td class="available off" data-title="r0c2">26</td><td class="available off" data-title="r0c3">27</td><td class="available off" data-title="r0c4">28</td><td class="available off" data-title="r0c5">29</td><td class="available off" data-title="r0c6">30</td></tr><tr><td class="available" data-title="r1c0">1</td><td class="available" data-title="r1c1">2</td><td class="available" data-title="r1c2">3</td><td class="available" data-title="r1c3">4</td><td class="available" data-title="r1c4">5</td><td class="available" data-title="r1c5">6</td><td class="available" data-title="r1c6">7</td></tr><tr><td class="available" data-title="r2c0">8</td><td class="available" data-title="r2c1">9</td><td class="available" data-title="r2c2">10</td><td class="available" data-title="r2c3">11</td><td class="available" data-title="r2c4">12</td><td class="available" data-title="r2c5">13</td><td class="available" data-title="r2c6">14</td></tr><tr><td class="available" data-title="r3c0">15</td><td class="available" data-title="r3c1">16</td><td class="available" data-title="r3c2">17</td><td class="available" data-title="r3c3">18</td><td class="available active start-date" data-title="r3c4">19</td><td class="available in-range" data-title="r3c5">20</td><td class="available in-range" data-title="r3c6">21</td></tr><tr><td class="available in-range" data-title="r4c0">22</td><td class="available in-range" data-title="r4c1">23</td><td class="available in-range" data-title="r4c2">24</td><td class="available in-range" data-title="r4c3">25</td><td class="off disabled" data-title="r4c4">26</td><td class="off disabled" data-title="r4c5">27</td><td class="off disabled" data-title="r4c6">28</td></tr><tr><td class="off disabled" data-title="r5c0">29</td><td class="off disabled" data-title="r5c1">30</td><td class="off disabled" data-title="r5c2">31</td><td class="off disabled" data-title="r5c3">1</td><td class="off disabled" data-title="r5c4">2</td><td class="off disabled" data-title="r5c5">3</td><td class="off disabled" data-title="r5c6">4</td></tr></tbody></table></div></div></div></body></html>

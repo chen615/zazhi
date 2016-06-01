@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://e.tvm.cn/datacenter/detail/current -->
+<html lang="en" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Bootstrap Admin App + jQuery">
+<meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>电视直通车-自助投放平台</title>
+<!-- =============== VENDOR STYLES ===============-->
+<!-- =============== BOOTSTRAP STYLES ===============-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap.css" id="bscss">
+<!-- SWEET ALERT-->
+<link rel="stylesheet" href="./fenxi_files/sweetalert.css">
+<!-- FONT AWESOME-->
+<link rel="stylesheet" href="./fenxi_files/font-awesome.min.css">
+<!-- ANIMATE.CSS-->
+<link rel="stylesheet" href="./fenxi_files/animate.min.css">
+<!-- WHIRL (spinners)-->
+<link rel="stylesheet" href="./fenxi_files/whirl.css">
+<!-- =============== PAGE VENDOR STYLES ===============-->
+
+<!-- =============== APP STYLES ===============-->
+<link rel="stylesheet" href="./fenxi_files/app-new.css" id="maincss">
+<link rel="stylesheet" href="./fenxi_files/theme-i.css" id="maincss">
+<!-- Loaders.css-->
+<link rel="stylesheet" href="./fenxi_files/loaders.css">
+<script src="./fenxi_files/jquery.js"></script><style type="text/css"></style>
+<script src="./fenxi_files/jquery.form.js"></script>
+<!-- Spinkit-->
+<link rel="stylesheet" href="./fenxi_files/spinkit.css">
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars-->
+<link rel="stylesheet" href="./fenxi_files/jquery.fileupload.css">
+<link rel="stylesheet" type="text/css" media="all" href="./fenxi_files/daterangepicker-bs3.css">
+<!--   <script type="text/javascript" src="/assets/lib/Angle3.0/vendor/daterangepicker/jquery-1.8.3.min.js"></script>-->
+<script type="text/javascript" src="./fenxi_files/moment.js"></script>
+<script type="text/javascript" src="./fenxi_files/daterangepicker.js"></script>
+<!-- DATETIMEPICKER-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap-datetimepicker.min.css">
+<!-- SLIDER CTRL-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap-slider.min.css">
+<!-- CHOSEN-->
+<link rel="stylesheet" href="./fenxi_files/chosen.min.css">
+<!-- TAGS INPUT-->
+<link rel="stylesheet" href="./fenxi_files/bootstrap-tagsinput.css">
+<!--shouye-->
+<link rel="stylesheet" href="./fenxi_files/simple-line-icons.css">
+<link rel="stylesheet" href="./fenxi_files/weather-icons.min.css">
+<!--shouye end-->
+
+
+<link href="./fenxi_files/WdatePicker.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<div id="myModal_publish" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 id="myModalLabel" class="modal-title">修改预算</h4>
+            </div>
+            <div class="modal-body">
+                <div>有<label id="failTotal"></label>个计划修改失败。<!--计划出价不可低于出价底价。--></div>
+                <div id="showFail">哪些计划修改失败？</div>
+                <ul class="errorList">
+                    <!--<li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>
+                    <li> · 名称</li>-->
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper">
+
+    <!-- Top header navbar-->
+          <header class="topnavbar-wrapper">
+         <!-- START Top Navbar-->
+         <nav role="navigation" class="navbar topnavbar">
+            <!-- START navbar header-->
+            <input type="hidden" value="http://api.dsp.tvm.cn" name="adcloud-url" id="adcloud-url">
+            <input type="hidden" value="http://dmp.tvm.cn" name="adm-url" id="adm-url">
+            <div class="navbar-header">
+               <a href="http://e.tvm.cn/" class="navbar-brand">
+                  <div class="brand-logo">
+
+                     <span style="float: left; color:#fff;height:46px; line-height:46px; margin-top:7px; font-size:16px;">电视直通车-自助投放平台</span>
+                  </div>
+                  <div class="brand-logo-collapsed">
+                     <img src="./fenxi_files/logo-small.png" alt="电视直通车-自助投放平台" class="img-responsive">
+                  </div>
+               </a>
+            </div>
+            <div class="nav-wrapper">
+            <form role="search" action="http://e.tvm.cn/datacenter/detail/search.html" class="navbar-form">
+               <div class="form-group has-feedback">
+                  <input type="text" placeholder="Type and hit enter ..." class="form-control">
+                  <div data-search-dismiss="" class="fa fa-times form-control-feedback"></div>
+               </div>
+               <button type="submit" class="hidden btn btn-default">Submit</button>
+            </form>
+            <!-- END Search form-->
+         </nav>
+         <!-- END Top Navbar-->
+         <style>
+            .nav-wrapper ul li .nickname:hover{
+               cursor:default;
+            }
+            .msg-con{
+               width: 300px;
+               padding: 5px 0px;
+               overflow: hidden;
+               white-space: nowrap;
+               text-overflow: ellipsis;
+               font-size: 12px;
+            }
+            .dropdown-list .msg-more{
+               padding: 12px 20px;
+               color: #23b7e5;
+               text-align: right;
+            }
+            .dropdown-list .msg-more:hover{
+               text-decoration: underline;
+               color: #23b7e5;
+            }
+         </style>
+      </header>
+            <!-- Sidebar-->
+          <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <div class="aside-inner">
+            <nav data-sidebar-anyclick-close="" class="sidebar" id="sidebar">
+               <!-- START sidebar nav-->
+               <ul class="nav" id="nav">
+                  <!-- Iterates over all sidebar items-->
+
+
+                  <li class="active">
+                     <a href="http://e.tvm.cn/datacenter/detail/current#datacenter" title="数据中心" data-toggle="collapse" aria-expanded="true">
+                        <em class="icon-graph"></em>
+                        <span data-localize="sidebar.nav.menu.MENU">数据中心</span>
+                     </a>
+                     <ul id="datacenter" class="nav sidebar-subnav collapse in" aria-expanded="true">
+                        <li class="sidebar-subnav-header">数据中心</li>
+
+                       <li>
+                           <a href="gaiyao.htm" title="数据概要">
+                              <span>数据概要</span>
+                           </a>
+                        </li>
+
+                        <li class="active">
+                           <a href="mingxi.htm" title="曝光明细">
+                              <span>曝光明细</span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="fenxi.htm" title="投放分析">
+                              <span>投放分析</span>
+                           </a>
+                        </li>
+                        <!-- <li class=" ">
+                           <a href="/datacenter/user/profile" title="用户图谱">
+                              <span>用户图谱</span>
+                           </a>
+                        </li> -->
+                     </ul>
+                  </li>
+
+               </ul>
+               <!-- END sidebar nav-->
+            </nav>
+         </div>
+         <!-- END Sidebar (left)-->
+      </aside>
+
+
+            <!-- Offsidebar-->
+          <aside class="offsidebar">
+         <!-- START Off Sidebar (right)-->
+         <nav>
+            <div role="tabpanel">
+               <!-- Nav tabs-->
+               <ul role="tablist" class="nav nav-tabs nav-justified">
+                  <li role="presentation" class="active">
+                     <a href="http://e.tvm.cn/datacenter/detail/current#app-settings" aria-controls="app-settings" role="tab" data-toggle="tab">
+                        <em class="icon-equalizer fa-lg"></em>
+                     </a>
+                  </li>
+                  <li role="presentation">
+                     <a href="http://e.tvm.cn/auth/logout">
+                        <em class="icon-users fa-lg"></em>
+                     </a>
+                  </li>
+               </ul>
+               <!-- Tab panes-->
+               <div class="tab-content">
+                  <div id="app-settings" role="tabpanel" class="tab-pane fade in active">
+                     <h3 class="text-center text-thin">Tab 1</h3>
+                  </div>
+                  <div id="app-chat" role="tabpanel" class="tab-pane fade">
+                     <h3 class="text-center text-thin">Tab 2</h3>
+                  </div>
+               </div>
+            </div>
+         </nav>
+         <!-- END Off Sidebar (right)-->
+      </aside>
+            <!-- Main section-->
+        <section>
+    <link rel="stylesheet" href="./fenxi_files/sun_publish-60edf09f.css">
+    <link rel="stylesheet" href="./fenxi_files/current-62722f1a.css">
+    <link rel="stylesheet" href="./fenxi_files/user_detail-1fa59a6b.css">
+    <link rel="stylesheet" href="./fenxi_files/view_back-6aa701d9.css">
+    <div class="content-wrapper">
+    <div class="content-heading mb0">
+        <div class="todayData">
+            <a href="http://e.tvm.cn/datacenter/detail/current#">
+                <span>曝光明细</span>
+            </a>
+
+        </div>
+    </div>
+    <!-- <div class="content-heading mb0">
+    <div class="todayData">
+        <a class="current" href="/datacenter/detail/current">
+            <span>当前展现&nbsp;&nbsp;</span>
+        </a> |
+        <a href="/datacenter/detail/consumption">
+            &nbsp;&nbsp;历史展现
+        </a>
+        <button class="mb-sm btn btn-default refresh"><em class="refresh fa icon-refresh"></em>&nbsp;刷新数据</button>
+        <span class="right newDateTime">最新数据&nbsp;:&nbsp;今日 <span></span></span>
+    </div>
+</div>-->
+
+    <div class="panel panel-default" id="dateSelect" style="">
+        选择时间:
+        <span class="cur">今天</span>
+        <span>昨天</span>
+        <span>最近7天</span>
+        <input type="text" readonly="" style="width: 210px; display: inline; border: 1px solid rgb(236, 236, 236);" name="reservation" id="reservation" class="form-control" value="">
+        <!--选择时间&nbsp;:&nbsp;
+        <input type="text"
+                readonly=""
+                style="width: 210px"
+                name="reservation"
+                id="reservation"
+                class="form-control active"
+                value="">
+        &nbsp;<span class="days">共7天数据</span>-->
+
+    </div>
+    <div class="history panel panel-default">
+        <!--<div class=" panel-heading"><div class="panel-title">展现统计</div></div>-->
+        <div class="panel-body" style="display:none">
+            <div class="table-responsive">
+                <table class="">
+                    <tbody><tr>
+                        <td class="col-md-2 focus">
+                            <div class="title ">点击率</div>
+                            <div class="number clickcont">0%</div>
+                            <div class="summary">点击率=点击/曝光</div>
+                        </td>
+                        <td class="col-md-2 br">
+                            <div class="number pubnum">0</div>
+                            <div class="title">投放次数</div>
+                        </td>
+                        <td class="col-md-2 br">
+                            <div class="number _pv">0</div>
+                            <div class="title">曝光</div>
+                        </td>
+                        <!-- <td class="col-md-2 br">
+                            <div class="number new">0</div>
+                            <div class="title">展现用户</div>
+                            <div class="title"><span class="per newUser">(新用户:)</span></div>
+                        </td> -->
+                        <td class="col-md-2 br">
+                            <div class="number cn">0</div>
+                            <div class="title">点击</div>
+                        </td>
+                        <!-- <td class="col-md-2">
+                            <div class="number suv">0</div>
+                            <div class="title">点击用户</div>
+                        </td> -->
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="echar panel panel-default">
+        <div class="panel-heading">
+            <a href="javascript:void(0)" title="" class="pull-right" id="tabShow">
+                <span>收起</span><em class="fa fa-minus"></em>
+            </a>
+            <div class="panel-title">数据趋势</div>
+        </div>
+        <div class="panel-wrapper collapse in" aria-expanded="true" style="position: relative;">
+            <div class="panel-body">
+                <div class="" id="toggleBox">
+                    <div id="chartToggle" style="display: none;">
+                        <div class="toggle onTime current">时</div>
+                        <div class="toggle onDate">日</div>
+                    </div>
+                </div>
+                <div id="join_line" class="col-md-12" _echarts_instance_="1464158303003" style="-webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
+            </div>
+        </div>
+    </div>
+    <div class="tablebox panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title" id="d_detail">2016-05-20 20:00 曝光明细（试试点击曲线上的数据点）</div>
+        </div>
+        <!-- START panel-->
+
+        <!-- START table-responsive-->
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>时间
+                            <!--<em id="p_filter" class="fa fa-long-arrow-down order"></em>-->
+                        </th>
+                        <th>投放计划
+                            <!--<em id="p_filter" class="fa fa-filter faw"></em>
+                            <div class="status_drop" style="display: none;">
+                                <ul id="p_menu" class="p_menu" style="">
+                                </ul>
+                            </div>-->
+                        </th>
+                        <th>频道
+
+                           <!-- <em id="c_filter" class="fa fa-filter faw"></em>
+                            <div class="status_drop" style="display: none;">
+                                <ul id="c_menu" class="p_menu" style="">
+                                </ul>
+                            </div>-->
+                        </th>
+                        <!--<th>栏目
+                            <em id="k_filter" class="fa fa-filter faw"></em>
+                            <div class="status_drop" style="display: none;">
+                                <ul id="k_menu" style="">
+                                </ul>
+                            </div>
+                        </th>-->
+                        <th>进入点</th>
+                        <th style="width: 15%;">微信</th>
+                        <!-- <th>浏览时长(秒)
+                           <em id="p_filter" class="fa fa-long-arrow-down order"></em>
+                        </th>-->
+                        <th>所在地区</th>
+                        <th>系统</th>
+                        <th>手机号</th>
+                    </tr>
+                </thead>
+                <tbody class="body"></tbody>
+            </table>
+        </div>
+        <!-- END table-responsive-->
+
+        <div class="panel-footer">
+            <!--<div class="tcdPageCode"></div>-->
+            <div id="pagination"><li class="prev disabled" jp-role="prev" jp-data="0"><a href="javascript:void(0);"> </a></li><li class="page active" jp-role="page" jp-data="1"><a href="javascript:void(0);"> 1 / 1 </a></li><li class="next" jp-role="next" jp-data="2"><a href="javascript:void(0);"> </a></li></div>
+        </div>
+    </div>
+
+    </div>
+    </section>
+    <script src="./fenxi_files/echarts.js"></script>
+    <script src="./fenxi_files/jquery.min.js"></script>
+    <script src="./fenxi_files/jwplayer.js"></script>
+    <script src="./fenxi_files/jqPaginator.js"></script>
+    <script src="./fenxi_files/daterangepicker.js"></script>
+    <script type="text/javascript" src="./fenxi_files/api"></script><script type="text/javascript" src="./fenxi_files/getscript"></script>
+
+    <script src="./fenxi_files/view_back-15634888.js"></script>
+    <script src="./fenxi_files/page-3a380c02.js"></script>
+    <script src="./fenxi_files/current-a742d25e.js"></script>
+    <script src="./fenxi_files/user_detail-50a8540a.js"></script>
+    <script type="text/javascript">jwplayer.key = "DNFxpxvc9p8jGqZLsgNv4Rt0hW3O5lw2wxtz7g==";</script>
+            <!-- Page footer-->
+
+         <!-- <footer id="footer" style="">
+        <span>版权所有© 天脉聚源(北京)传媒科技有限公司2008-2016保留一切权利</span>
+    </footer> -->
+</div>
+
+<!-- =============== VENDOR SCRIPTS ===============-->
+<!-- JQUERY-->
+
+<!-- SLIDER CTRL-->
+<script src="./fenxi_files/bootstrap-slider.min.js"></script>
+
+<!-- MODERNIZR-->
+<script src="./fenxi_files/modernizr.js"></script>
+
+<!-- BOOTSTRAP-->
+<script src="./fenxi_files/bootstrap.js"></script>
+<!-- STORAGE API-->
+<script src="./fenxi_files/jquery.storageapi.js"></script>
+<!-- JQUERY EASING-->
+<script src="./fenxi_files/jquery.easing.js"></script>
+<!-- ANIMO-->
+<script src="./fenxi_files/animo.js"></script>
+<!-- LOCALIZE-->
+<script src="./fenxi_files/jquery.localize.js"></script>
+<!-- RTL demo-->
+<script src="./fenxi_files/demo-rtl.js"></script>
+<!-- SLIMSCROLL-->
+<script src="./fenxi_files/jquery.slimscroll.min.js"></script>
+<!-- SCREENFULL-->
+<script src="./fenxi_files/screenfull.js"></script>
+
+<!-- SWEET ALERT-->
+<script src="./fenxi_files/sweetalert.min.js"></script>
+<!-- =============== PAGE VENDOR SCRIPTS ===============-->
+<!-- PARSLEY-->
+<script src="./fenxi_files/parsley.min.js"></script>
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included-->
+<script src="./fenxi_files/widget.js"></script>
+<!-- The Templates plugin is included to render the upload/download listings-->
+<script src="./fenxi_files/tmpl.js"></script>
+
+<!-- CLASSY LOADER-->
+<!--<script src="/assets/lib/Angle3.0/vendor/Chart.js/Chart.js"></script>-->
+
+<script src="./fenxi_files/demo-search.js"></script>
+<!-- CHOSEN-->
+<script src="./fenxi_files/chosen.jquery.min.js"></script>
+<!-- MOMENT JS-->
+<script src="./fenxi_files/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="./fenxi_files/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="./fenxi_files/WdatePicker.js" charset="UTF-8"></script>
+<!-- CLASSY LOADER-->
+<script src="./fenxi_files/jquery.classyloader.min.js"></script>
+
+<!-- FLOT CHART-->
+<!--   <script src="/assets/lib/Angle3.0/vendor/Flot/jquery.flot.js"></script>
+   <script src="/assets/lib/Angle3.0/vendor/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+   <script src="/assets/lib/Angle3.0/vendor/Flot/jquery.flot.resize.js"></script>
+   <script src="/assets/lib/Angle3.0/vendor/Flot/jquery.flot.pie.js"></script>
+   <script src="/assets/lib/Angle3.0/vendor/Flot/jquery.flot.time.js"></script>
+   <script src="/assets/lib/Angle3.0/vendor/Flot/jquery.flot.categories.js"></script>
+
+   <script src="/assets/lib/Angle3.0/vendor/flot-spline/js/jquery.flot.spline.min.js"></script>
+
+   <script src="/assets/lib/Angle3.0/vendor/flot-spline/js/jquery.flot.spline.min.js"></script>-->
+<!--shouye-->
+<script src="./fenxi_files/bootstrap-tagsinput.min.js"></script>
+<!--shouye end-->
+
+<!-- TAGS INPUT-->
+<script src="./fenxi_files/bootstrap-tagsinput.min.js"></script>
+        <!-- =============== APP SCRIPTS ===============-->
+<script src="./fenxi_files/app.js"></script>
+
+
+
+
+
+<div class="daterangepicker dropdown-menu show-calendar opensright"><div class="ranges"><div class="range_inputs"><div class="daterangepicker_start_input"><label for="daterangepicker_start">从</label><input class="input-mini" type="text" name="daterangepicker_start" value="" disabled="disabled"></div><div class="daterangepicker_end_input"><label for="daterangepicker_end">到</label><input class="input-mini" type="text" name="daterangepicker_end" value="" disabled="disabled"></div><button class="applyBtn btn btn-small btn-success">确定</button>&nbsp;<button class="cancelBtn btn btn-small btn-default">取消</button></div></div><div class="clear"></div><div class="calendar right"><div class="calendar-date"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">五月 2016</th><th class="next available"><i class="fa fa-arrow-right icon-arrow-right glyphicon glyphicon-arrow-right"></i></th></tr><tr><th>周日</th><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>周六</th></tr></thead><tbody><tr><td class="off disabled" data-title="r0c0">24</td><td class="off disabled" data-title="r0c1">25</td><td class="off disabled" data-title="r0c2">26</td><td class="off disabled" data-title="r0c3">27</td><td class="off disabled" data-title="r0c4">28</td><td class="off disabled" data-title="r0c5">29</td><td class="off disabled" data-title="r0c6">30</td></tr><tr><td class="off disabled" data-title="r1c0">1</td><td class="off disabled" data-title="r1c1">2</td><td class="off disabled" data-title="r1c2">3</td><td class="off disabled" data-title="r1c3">4</td><td class="off disabled" data-title="r1c4">5</td><td class="off disabled" data-title="r1c5">6</td><td class="off disabled" data-title="r1c6">7</td></tr><tr><td class="off disabled" data-title="r2c0">8</td><td class="off disabled" data-title="r2c1">9</td><td class="off disabled" data-title="r2c2">10</td><td class="off disabled" data-title="r2c3">11</td><td class="off disabled" data-title="r2c4">12</td><td class="off disabled" data-title="r2c5">13</td><td class="off disabled" data-title="r2c6">14</td></tr><tr><td class="off disabled" data-title="r3c0">15</td><td class="off disabled" data-title="r3c1">16</td><td class="off disabled" data-title="r3c2">17</td><td class="off disabled" data-title="r3c3">18</td><td class="available in-range" data-title="r3c4">19</td><td class="available in-range" data-title="r3c5">20</td><td class="available in-range" data-title="r3c6">21</td></tr><tr><td class="available in-range" data-title="r4c0">22</td><td class="available in-range" data-title="r4c1">23</td><td class="available in-range" data-title="r4c2">24</td><td class="available active end-date" data-title="r4c3">25</td><td class="off disabled" data-title="r4c4">26</td><td class="off disabled" data-title="r4c5">27</td><td class="off disabled" data-title="r4c6">28</td></tr><tr><td class="off disabled" data-title="r5c0">29</td><td class="off disabled" data-title="r5c1">30</td><td class="off disabled" data-title="r5c2">31</td><td class="off disabled" data-title="r5c3">1</td><td class="off disabled" data-title="r5c4">2</td><td class="off disabled" data-title="r5c5">3</td><td class="off disabled" data-title="r5c6">4</td></tr></tbody></table></div></div><div class="calendar left"><div class="calendar-date"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-arrow-left icon-arrow-left glyphicon glyphicon-arrow-left"></i></th><th colspan="5" class="month">五月 2016</th><th class="next available"><i class="fa fa-arrow-right icon-arrow-right glyphicon glyphicon-arrow-right"></i></th></tr><tr><th>周日</th><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>周六</th></tr></thead><tbody><tr><td class="available off" data-title="r0c0">24</td><td class="available off" data-title="r0c1">25</td><td class="available off" data-title="r0c2">26</td><td class="available off" data-title="r0c3">27</td><td class="available off" data-title="r0c4">28</td><td class="available off" data-title="r0c5">29</td><td class="available off" data-title="r0c6">30</td></tr><tr><td class="available" data-title="r1c0">1</td><td class="available" data-title="r1c1">2</td><td class="available" data-title="r1c2">3</td><td class="available" data-title="r1c3">4</td><td class="available" data-title="r1c4">5</td><td class="available" data-title="r1c5">6</td><td class="available" data-title="r1c6">7</td></tr><tr><td class="available" data-title="r2c0">8</td><td class="available" data-title="r2c1">9</td><td class="available" data-title="r2c2">10</td><td class="available" data-title="r2c3">11</td><td class="available" data-title="r2c4">12</td><td class="available" data-title="r2c5">13</td><td class="available" data-title="r2c6">14</td></tr><tr><td class="available" data-title="r3c0">15</td><td class="available" data-title="r3c1">16</td><td class="available" data-title="r3c2">17</td><td class="available" data-title="r3c3">18</td><td class="available active start-date" data-title="r3c4">19</td><td class="available in-range" data-title="r3c5">20</td><td class="available in-range" data-title="r3c6">21</td></tr><tr><td class="available in-range" data-title="r4c0">22</td><td class="available in-range" data-title="r4c1">23</td><td class="available in-range" data-title="r4c2">24</td><td class="available in-range" data-title="r4c3">25</td><td class="available" data-title="r4c4">26</td><td class="off disabled" data-title="r4c5">27</td><td class="off disabled" data-title="r4c6">28</td></tr><tr><td class="off disabled" data-title="r5c0">29</td><td class="off disabled" data-title="r5c1">30</td><td class="off disabled" data-title="r5c2">31</td><td class="off disabled" data-title="r5c3">1</td><td class="off disabled" data-title="r5c4">2</td><td class="off disabled" data-title="r5c5">3</td><td class="off disabled" data-title="r5c6">4</td></tr></tbody></table></div></div></div></body></html>
